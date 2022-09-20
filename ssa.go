@@ -1064,7 +1064,8 @@ func (e *ssaEvent) item(styles map[string]*Style) (i *Item, err error) {
 	}
 
 	// Loop through lines
-	for _, s := range strings.Split(e.text, "\\n") {
+	tmpText := strings.ReplaceAll(e.text, "\\N", "\\n")
+	for _, s := range strings.Split(tmpText, "\\n") {
 		// Init
 		s = strings.TrimSpace(s)
 		var l = Line{VoiceName: e.name}
